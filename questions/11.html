@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>9. 猜测这种划分最可能是什么聚类算法的结果 · 机器学习面试笔试题 - 极客圈</title>
+        <title>11. 精确率（precision）和召回率（recall） · 机器学习面试笔试题 - 极客圈</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -70,10 +70,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="10.html" />
     
-    
-    <link rel="prev" href="8.html" />
+    <link rel="prev" href="10.html" />
     
 
     <style>
@@ -258,7 +256,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.9" data-path="9.html">
+        <li class="chapter " data-level="1.2.9" data-path="9.html">
             
                 <a href="9.html">
             
@@ -284,7 +282,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.11" data-path="11.html">
+        <li class="chapter active" data-level="1.2.11" data-path="11.html">
             
                 <a href="11.html">
             
@@ -332,7 +330,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >9. 猜测这种划分最可能是什么聚类算法的结果</a>
+        <a href=".." >11. 精确率（precision）和召回率（recall）</a>
     </h1>
 </div>
 
@@ -347,16 +345,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="9-&#x731C;&#x6D4B;&#x8FD9;&#x79CD;&#x5212;&#x5206;&#x6700;&#x53EF;&#x80FD;&#x662F;&#x4EC0;&#x4E48;&#x805A;&#x7C7B;&#x7B97;&#x6CD5;&#x7684;&#x7ED3;&#x679C;">9. &#x731C;&#x6D4B;&#x8FD9;&#x79CD;&#x5212;&#x5206;&#x6700;&#x53EF;&#x80FD;&#x662F;&#x4EC0;&#x4E48;&#x805A;&#x7C7B;&#x7B97;&#x6CD5;&#x7684;&#x7ED3;&#x679C;</h1>
-<p><img src="image/9.cluster.question.png" alt="&#x5212;&#x5206;&#x7ED3;&#x679C;"></p>
-<h2 id="&#x4EE5;&#x4E0B;&#x662F;&#x5404;&#x4E2A;&#x7B97;&#x6CD5;&#x7684;&#x6BD4;&#x8F83;">&#x4EE5;&#x4E0B;&#x662F;&#x5404;&#x4E2A;&#x7B97;&#x6CD5;&#x7684;&#x6BD4;&#x8F83;</h2>
-<p><img src="image/9.cluster.algorithms.png" alt="&#x6BD4;&#x8F83;"></p>
-<h2 id="&#x5404;&#x4E2A;&#x805A;&#x7C7B;&#x7B97;&#x6CD5;&#x6BD4;&#x8F83;&#x7684;python&#x4EE3;&#x7801;">&#x5404;&#x4E2A;&#x805A;&#x7C7B;&#x7B97;&#x6CD5;&#x6BD4;&#x8F83;&#x7684;Python&#x4EE3;&#x7801;</h2>
-<p><a href="https://github.com/geekcircle/machine-learning-interview-qa/tree/master/ipynb/sklearn-cluster-compare.ipynb" target="_blank">python&#x4EE3;&#x7801;&#x94FE;&#x63A5;</a></p>
-<blockquote>
-<p>&#x6700;&#x53EF;&#x80FD;&#x662F;KMean&#x7B97;&#x6CD5;</p>
-</blockquote>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-05-30 22:40:29 </span> </footer>
+                                <h1 id="11-&#x7CBE;&#x786E;&#x7387;&#xFF08;precision&#xFF09;&#x548C;&#x53EC;&#x56DE;&#x7387;&#xFF08;recall&#xFF09;">11. &#x7CBE;&#x786E;&#x7387;&#xFF08;precision&#xFF09;&#x548C;&#x53EC;&#x56DE;&#x7387;&#xFF08;recall&#xFF09;</h1>
+<p>&#x6DF7;&#x6DC6;&#x77E9;&#x9635;</p>
+<ul>
+<li>True Positive(&#x771F;&#x6B63;, TP)&#xFF1A;&#x5C06;&#x6B63;&#x7C7B;&#x9884;&#x6D4B;&#x4E3A;&#x6B63;&#x7C7B;&#x6570;.</li>
+<li>True Negative(&#x771F;&#x8D1F; , TN)&#xFF1A;&#x5C06;&#x8D1F;&#x7C7B;&#x9884;&#x6D4B;&#x4E3A;&#x8D1F;&#x7C7B;&#x6570;.</li>
+<li>False Positive(&#x5047;&#x6B63;, FP)&#xFF1A;&#x5C06;&#x8D1F;&#x7C7B;&#x9884;&#x6D4B;&#x4E3A;&#x6B63;&#x7C7B;&#x6570; &#x2192; &#x8BEF;&#x62A5; (Type I error).</li>
+<li>False Negative(&#x5047;&#x8D1F; , FN)&#xFF1A;&#x5C06;&#x6B63;&#x7C7B;&#x9884;&#x6D4B;&#x4E3A;&#x8D1F;&#x7C7B;&#x6570; &#x2192; &#x6F0F;&#x62A5; (Type II error).</li>
+</ul>
+<p><img src="image/11.confusion_matrix.png" alt="&#x793A;&#x610F;&#x56FE;"></p>
+<p>&#x7CBE;&#x786E;&#x7387;(precision)&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;</p>
+<p><img src="image/11.precision.png" alt="precision"></p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x7CBE;&#x786E;&#x7387;(precision)&#x548C;&#x51C6;&#x786E;&#x7387;(accuracy)&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;</p>
+<p><img src="image/11.accuracy.png" alt="accuracy"></p>
+<p>&#x5728;&#x6B63;&#x8D1F;&#x6837;&#x672C;&#x4E0D;&#x5E73;&#x8861;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x51C6;&#x786E;&#x7387;&#x8FD9;&#x4E2A;&#x8BC4;&#x4EF7;&#x6307;&#x6807;&#x6709;&#x5F88;&#x5927;&#x7684;&#x7F3A;&#x9677;&#x3002;&#x6BD4;&#x5982;&#x5728;&#x4E92;&#x8054;&#x7F51;&#x5E7F;&#x544A;&#x91CC;&#x9762;&#xFF0C;&#x70B9;&#x51FB;&#x7684;&#x6570;&#x91CF;&#x662F;&#x5F88;&#x5C11;&#x7684;&#xFF0C;&#x4E00;&#x822C;&#x53EA;&#x6709;&#x5343;&#x5206;&#x4E4B;&#x51E0;&#xFF0C;&#x5982;&#x679C;&#x7528;acc&#xFF0C;&#x5373;&#x4F7F;&#x5168;&#x90E8;&#x9884;&#x6D4B;&#x6210;&#x8D1F;&#x7C7B;&#xFF08;&#x4E0D;&#x70B9;&#x51FB;&#xFF09;acc &#x4E5F;&#x6709; 99% &#x4EE5;&#x4E0A;&#xFF0C;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#x3002;</p>
+<p>&#x53EC;&#x56DE;&#x7387;(recall,sensitivity,true positive rate)&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;</p>
+<p><img src="image/11.recall.png" alt="recall"></p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x8FD8;&#x6709;<code>F1</code>&#x503C;&#xFF0C;&#x662F;&#x7CBE;&#x786E;&#x7387;&#x548C;&#x53EC;&#x56DE;&#x7387;&#x7684;&#x8C03;&#x548C;&#x5747;&#x503C;&#xFF0C;</p>
+<p><img src="image/11.F1.png" alt="F1"></p>
+<p>&#x7CBE;&#x786E;&#x7387;&#x548C;&#x51C6;&#x786E;&#x7387;&#x90FD;&#x9AD8;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>F1</code>&#x503C;&#x4E5F;&#x4F1A;&#x9AD8;&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-05-31 00:25:36 </span> </footer>
                                 
                                 </section>
                             
@@ -383,14 +391,10 @@
 
             
                 
-                <a href="8.html" class="navigation navigation-prev " aria-label="Previous page: 8. 数据清洗与特征处理">
+                <a href="10.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 10. 支持向量机(SVM)中的支持向量是什么意思">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="10.html" class="navigation navigation-next " aria-label="Next page: 10. 支持向量机(SVM)中的支持向量是什么意思">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -399,7 +403,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9. 猜测这种划分最可能是什么聚类算法的结果","level":"1.2.9","depth":2,"next":{"title":"10. 支持向量机(SVM)中的支持向量是什么意思","level":"1.2.10","depth":2,"path":"questions/10.md","ref":"questions/10.md","articles":[]},"previous":{"title":"8. 数据清洗与特征处理","level":"1.2.8","depth":2,"path":"questions/8.md","ref":"questions/8.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/machine-learning-interview-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/machine-learning-interview-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"machine-learning-interview-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"机器学习面试笔试题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","machine-learning-interview-qa":"https://github.com/geekcircle/machine-learning-interview-qa"}},"gitbook":"*","description":"持续整理机器学习面试笔试题"},"file":{"path":"questions/9.md","mtime":"2018-05-30T14:40:29.029Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-30T16:26:22.278Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"11. 精确率（precision）和召回率（recall）","level":"1.2.11","depth":2,"previous":{"title":"10. 支持向量机(SVM)中的支持向量是什么意思","level":"1.2.10","depth":2,"path":"questions/10.md","ref":"questions/10.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/machine-learning-interview-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/machine-learning-interview-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"machine-learning-interview-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"机器学习面试笔试题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","machine-learning-interview-qa":"https://github.com/geekcircle/machine-learning-interview-qa"}},"gitbook":"*","description":"持续整理机器学习面试笔试题"},"file":{"path":"questions/11.md","mtime":"2018-05-30T16:25:36.553Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-30T16:26:22.278Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
