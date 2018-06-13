@@ -1,0 +1,647 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>14. 决策树 · 机器学习面试笔试题 - 极客圈</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="13.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"geekcircle","repo":"machine-learning-interview-qa","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://geektutu.com/series" target="_blank" class="custom-link">极客兔兔的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/geekcircle/machine-learning-interview-qa" target="_blank" class="custom-link">machine-learning-interview-qa</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    题目
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.html">
+            
+                <a href="1.html">
+            
+                    
+                    1. 如何处理特征向量的缺失值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.html">
+            
+                <a href="2.html">
+            
+                    
+                    2. 请简要说说一个完整机器学习项目的流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.html">
+            
+                <a href="3.html">
+            
+                    
+                    3. 某超市研究销售记录发现买啤酒的人很大概率也会买尿布，这属于数据挖掘的哪类问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.html">
+            
+                <a href="4.html">
+            
+                    
+                    4. 余弦相似与欧氏距离有什么区别和联系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.html">
+            
+                <a href="5.html">
+            
+                    
+                    5. 下面哪个不属于数据的属性类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.html">
+            
+                <a href="6.html">
+            
+                    
+                    6. 监督学习和无监督学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7.html">
+            
+                <a href="7.html">
+            
+                    
+                    7. 熵是为消除不确定性所需要获得的信息量，投掷均匀正六面体骰子的熵是
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8.html">
+            
+                <a href="8.html">
+            
+                    
+                    8. 数据清洗与特征处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9.html">
+            
+                <a href="9.html">
+            
+                    
+                    9. 猜测这种划分最可能是什么聚类算法的结果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="10.html">
+            
+                <a href="10.html">
+            
+                    
+                    10. 支持向量机(SVM)中的支持向量是什么意思
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="11.html">
+            
+                <a href="11.html">
+            
+                    
+                    11. 精确率（precision）和召回率（recall）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="12.html">
+            
+                <a href="12.html">
+            
+                    
+                    12. 数据挖掘中如何判断关联规则有效性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="13.html">
+            
+                <a href="13.html">
+            
+                    
+                    13. 朴素贝叶斯分类某个类别概率为0怎么办
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.14" data-path="14.html">
+            
+                <a href="14.html">
+            
+                    
+                    14. 决策树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >14. 决策树</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="14-&#x51B3;&#x7B56;&#x6811;">14. &#x51B3;&#x7B56;&#x6811;</h1>
+<h2 id="&#x4EC0;&#x4E48;&#x662F;&#x51B3;&#x7B56;&#x6811;">&#x4EC0;&#x4E48;&#x662F;&#x51B3;&#x7B56;&#x6811;</h2>
+<p>&#x51B3;&#x7B56;&#x6811;(decision tree)&#x662F;&#x4E00;&#x79CD;&#x57FA;&#x672C;&#x7684;&#x5206;&#x7C7B;&#x4E0E;&#x56DE;&#x5F52;&#x65B9;&#x6CD5;&#x3002;&#x51B3;&#x7B56;&#x6811;&#x662F;&#x7528;&#x6837;&#x672C;&#x7684;&#x5C5E;&#x6027;&#x4F5C;&#x4E3A;&#x7ED3;&#x70B9;&#xFF0C;&#x7528;&#x5C5E;&#x6027;&#x7684;&#x53D6;&#x503C;&#x4F5C;&#x4E3A;&#x5206;&#x652F;&#x7684;&#x6811;&#x7ED3;&#x6784;&#x3002; </p>
+<p>&#x51B3;&#x7B56;&#x6811;&#x7684;&#x6839;&#x7ED3;&#x70B9;&#x662F;&#x6240;&#x6709;&#x6837;&#x672C;&#x4E2D;&#x4FE1;&#x606F;&#x91CF;&#x6700;&#x5927;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x6811;&#x7684;&#x4E2D;&#x95F4;&#x7ED3;&#x70B9;&#x662F;&#x8BE5;&#x7ED3;&#x70B9;&#x4E3A;&#x6839;&#x7684;&#x5B50;&#x6811;&#x6240;&#x5305;&#x542B;&#x7684;&#x6837;&#x672C;&#x5B50;&#x96C6;&#x4E2D;&#x4FE1;&#x606F;&#x91CF;&#x6700;&#x5927;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x53F6;&#x7ED3;&#x70B9;&#x662F;&#x6837;&#x672C;&#x7684;&#x7C7B;&#x522B;&#x503C;&#x3002;&#x51B3;&#x7B56;&#x6811;&#x662F;&#x4E00;&#x79CD;&#x77E5;&#x8BC6;&#x8868;&#x793A;&#x5F62;&#x5F0F;&#xFF0C;&#x5B83;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x6837;&#x672C;&#x6570;&#x636E;&#x7684;&#x9AD8;&#x5EA6;&#x6982;&#x62EC;&#x51B3;&#x7B56;&#x6811;&#x80FD;&#x51C6;&#x786E;&#x5730;&#x8BC6;&#x522B;&#x6240;&#x6709;&#x6837;&#x672C;&#x7684;&#x7C7B;&#x522B;&#xFF0C;&#x4E5F;&#x80FD;&#x6709;&#x6548;&#x5730;&#x8BC6;&#x522B;&#x65B0;&#x6837;&#x672C;&#x7684;&#x7C7B;&#x522B;&#x3002;</p>
+<p><img src="image/14.decision_tree_eg.gif" alt="&#x51B3;&#x7B56;&#x6811;&#x4E3E;&#x4F8B;"></p>
+<h2 id="&#x7279;&#x5F81;&#x9009;&#x62E9;">&#x7279;&#x5F81;&#x9009;&#x62E9;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ID</th>
+<th style="text-align:center">&#x5E74;&#x9F84;</th>
+<th style="text-align:center">&#x6709;&#x5DE5;&#x4F5C;</th>
+<th style="text-align:center">&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x623F;&#x5B50;</th>
+<th style="text-align:center">&#x4FE1;&#x8D37;&#x60C5;&#x51B5;</th>
+<th style="text-align:center">&#x7C7B;&#x522B;(&#x662F;&#x5426;&#x4E2A;&#x7ED9;&#x8D37;&#x6B3E;)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&#x9752;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x4E00;&#x822C;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">&#x9752;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x597D;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">&#x9752;&#x5E74;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">&#x9752;&#x5E74;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x4E00;&#x822C;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">&#x9752;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x4E00;&#x822C;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">&#x4E2D;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x4E00;&#x822C;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">&#x4E2D;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x597D;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">&#x4E2D;&#x5E74;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">&#x4E2D;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x975E;&#x5E38;&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">&#x4E2D;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x975E;&#x5E38;&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">&#x8001;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x975E;&#x5E38;&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">&#x8001;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">&#x8001;&#x5E74;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">&#x8001;&#x5E74;</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x975E;&#x5E38;&#x597D;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">&#x8001;&#x5E74;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x4E00;&#x822C;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4FE1;&#x606F;&#x71B5;&#xFF08;entropy&#xFF09;&#x662F;&#x7528;&#x6765;&#x8861;&#x91CF;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x53D8;&#x91CF;&#x51FA;&#x73B0;&#x7684;&#x671F;&#x671B;&#x503C;&#x3002;&#x5982;&#x679C;&#x4FE1;&#x606F;&#x7684;&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#x8D8A;&#x5927;&#xFF0C;&#x71B5;&#x7684;&#x503C;&#x4E5F;&#x5C31;&#x8D8A;&#x5927;&#xFF0C;&#x51FA;&#x73B0;&#x7684;&#x5404;&#x79CD;&#x60C5;&#x51B5;&#x4E5F;&#x5C31;&#x8D8A;&#x591A;&#x3002;
+<img src="image/14.entropy.jpg" alt="&#x4FE1;&#x606F;&#x71B5;"></p>
+<p>&#x4FE1;&#x606F;&#x589E;&#x76CA;&#xFF08;information gain&#xFF09;&#x662F;&#x6307;&#x4FE1;&#x606F;&#x5212;&#x5206;&#x524D;&#x540E;&#x7684;&#x71B5;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x7531;&#x4E8E;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5206;&#x5272;&#x6837;&#x4F8B;&#x800C;&#x5BFC;&#x81F4;&#x7684;&#x671F;&#x671B;&#x71B5;&#x964D;&#x4F4E;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x5C31;&#x662F;&#x539F;&#x6709;&#x4FE1;&#x606F;&#x71B5;&#x4E0E;&#x5C5E;&#x6027;&#x5212;&#x5206;&#x540E;&#x4FE1;&#x606F;&#x71B5;&#xFF08;&#x9700;&#x8981;&#x5BF9;&#x5212;&#x5206;&#x540E;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x53D6;&#x671F;&#x671B;&#x503C;&#xFF09;&#x7684;&#x5DEE;&#x503C;&#xFF0C;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;
+<img src="image/14.gain.jpg" alt="&#x4FE1;&#x606F;&#x589E;&#x76CA;"></p>
+<h2 id="id3&#x7B97;&#x6CD5;">ID3&#x7B97;&#x6CD5;</h2>
+<p>&#x51B3;&#x7B56;&#x6811;&#x7B97;&#x6CD5;ID3&#x7684;&#x57FA;&#x672C;&#x601D;&#x60F3;&#xFF1A;</p>
+<p>&#x9996;&#x5148;&#x627E;&#x51FA;&#x6700;&#x6709;&#x5224;&#x522B;&#x529B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x628A;&#x6837;&#x4F8B;&#x5206;&#x6210;&#x591A;&#x4E2A;&#x5B50;&#x96C6;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x96C6;&#x53C8;&#x9009;&#x62E9;&#x6700;&#x6709;&#x5224;&#x522B;&#x529B;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x5212;&#x5206;&#xFF0C;&#x4E00;&#x76F4;&#x8FDB;&#x884C;&#x5230;&#x6240;&#x6709;&#x5B50;&#x96C6;&#x4EC5;&#x5305;&#x542B;&#x540C;&#x4E00;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x4E3A;&#x6B62;&#x3002;&#x6700;&#x540E;&#x5F97;&#x5230;&#x4E00;&#x68F5;&#x51B3;&#x7B56;&#x6811;&#x3002;</p>
+<p>J.R.Quinlan&#x7684;&#x5DE5;&#x4F5C;&#x4E3B;&#x8981;&#x662F;&#x5F15;&#x8FDB;&#x4E86;&#x4FE1;&#x606F;&#x8BBA;&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#xFF0C;&#x4ED6;&#x5C06;&#x5176;&#x79F0;&#x4E3A;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#xFF08;information gain&#xFF09;&#xFF0C;&#x4F5C;&#x4E3A;&#x5C5E;&#x6027;&#x5224;&#x522B;&#x80FD;&#x529B;&#x7684;&#x5EA6;&#x91CF;&#xFF0C;&#x8BBE;&#x8BA1;&#x4E86;&#x6784;&#x9020;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x3002;</p>
+<p>ID3&#x7B97;&#x6CD5;&#xFF1A;</p>
+<pre class="language-"><code>1.&#x5BF9;&#x5F53;&#x524D;&#x4F8B;&#x5B50;&#x96C6;&#x5408;&#xFF0C;&#x8BA1;&#x7B97;&#x5404;&#x5C5E;&#x6027;&#x7684;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#xFF1B;
+2.&#x9009;&#x62E9;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x6700;&#x5927;&#x7684;&#x5C5E;&#x6027;Ak&#xFF1B;
+3.&#x628A;&#x5728;Ak&#x5904;&#x53D6;&#x503C;&#x76F8;&#x540C;&#x7684;&#x4F8B;&#x5B50;&#x5F52;&#x4E8E;&#x540C;&#x4E00;&#x5B50;&#x96C6;&#xFF0C;Ak&#x53D6;&#x51E0;&#x4E2A;&#x503C;&#x5C31;&#x5F97;&#x51E0;&#x4E2A;&#x5B50;&#x96C6;&#xFF1B;
+4.&#x5BF9;&#x65E2;&#x542B;&#x6B63;&#x4F8B;&#x53C8;&#x542B;&#x53CD;&#x4F8B;&#x7684;&#x5B50;&#x96C6;&#xFF0C;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x5EFA;&#x6811;&#x7B97;&#x6CD5;&#xFF1B;
+5.&#x82E5;&#x5B50;&#x96C6;&#x4EC5;&#x542B;&#x6B63;&#x4F8B;&#x6216;&#x53CD;&#x4F8B;&#xFF0C;&#x5BF9;&#x5E94;&#x5206;&#x679D;&#x6807;&#x4E0A;P&#x6216;N&#xFF0C;&#x8FD4;&#x56DE;&#x8C03;&#x7528;&#x5904;&#x3002;
+</code></pre><h2 id="c45&#x7B97;&#x6CD5;">C4.5&#x7B97;&#x6CD5;</h2>
+<p>C4.5&#x7B97;&#x6CD5;&#x662F;ID3&#x7B97;&#x6CD5;&#x7684;&#x4E00;&#x79CD;&#x6539;&#x8FDB;&#x3002;</p>
+<p>&#x6539;&#x8FDB;</p>
+<ul>
+<li>&#x7528;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x7387;&#x6765;&#x9009;&#x62E9;&#x5C5E;&#x6027;&#xFF0C;&#x514B;&#x670D;&#x4E86;&#x7528;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x9009;&#x62E9;&#x5C5E;&#x6027;&#x504F;&#x5411;&#x9009;&#x62E9;&#x591A;&#x503C;&#x5C5E;&#x6027;&#x7684;&#x4E0D;&#x8DB3;</li>
+<li>&#x5728;&#x6784;&#x9020;&#x6811;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x526A;&#x679D;</li>
+<li>&#x5BF9;&#x8FDE;&#x7EED;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x79BB;&#x6563;&#x5316;</li>
+<li>&#x80FD;&#x591F;&#x5BF9;&#x4E0D;&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5904;&#x7406;</li>
+</ul>
+<p>&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x7387;</p>
+<p>&#x8BBE;&#x6837;&#x672C;&#x96C6;S&#x6309;&#x79BB;&#x6563;&#x5C5E;&#x6027;F&#x7684;c&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x53D6;&#x503C;&#x5212;&#x5206;&#x4E3A;c&#x4E2A;&#x5B50;&#x96C6;&#xFF0C;&#x5219;&#x8FD9;c&#x4E2A;&#x5B50;&#x96C6;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x4E3A;&#xFF1A;
+<img src="image/14.splitInfo.jpg" alt="splitInfo">
+&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x7387;&#x662F;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x4E0E;&#x4FE1;&#x606F;&#x71B5;&#x7684;&#x6BD4;&#x4F8B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;
+<img src="image/14.gainratio.jpg" alt="&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x7387;"></p>
+<h2 id="cart">CART</h2>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-13 23:42:41 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="13.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 13. 朴素贝叶斯分类某个类别概率为0怎么办">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"14. 决策树","level":"1.2.14","depth":2,"previous":{"title":"13. 朴素贝叶斯分类\b某个类别概率为0怎么办","level":"1.2.13","depth":2,"path":"questions/13.md","ref":"questions/13.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/machine-learning-interview-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/machine-learning-interview-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"machine-learning-interview-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"机器学习面试笔试题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","machine-learning-interview-qa":"https://github.com/geekcircle/machine-learning-interview-qa"}},"gitbook":"*","description":"持续整理机器学习面试笔试题"},"file":{"path":"questions/14.md","mtime":"2018-06-13T15:42:41.185Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-13T16:44:53.625Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
